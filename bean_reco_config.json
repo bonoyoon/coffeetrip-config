@@ -1,0 +1,50 @@
+{
+  "_설명": "원두 추천 선정 기준. 바꾼 뒤 app_bean_recommend.py --select 재실행하면 추천이 갱신됩니다.",
+  "global": {
+    "min_price": 5000,
+    "max_price": 200000,
+    "ppg_min": 8,
+    "ppg_max": 1000,
+    "exclude_nonbean": true,
+    "require_valid_gram": true,
+    "require_origin": false,
+    "prioritize_known_cafes": true,
+    "require_known_cafe_global": true,
+    "prefer_small_volume": true,
+    "small_volume_g": 250,
+    "max_won_per_200g": 50000,
+    "max_appearances_per_roastery": 1,
+    "_규칙": "require_known_cafe_global=true → 전체 추천 풀을 '앱 등록 카페'로만 한정. max_appearances_per_roastery=1 → 한 로스터리는 카테고리 간 중복 노출 안 됨(위에 먼저 나온 카테고리가 우선 선점)."
+  },
+  "categories": {
+    "오늘의 추천": {
+      "enabled": true, "count": 1, "max_per_roastery": 1,
+      "price_min": 5000, "price_max": 200000,
+      "origins": [], "free_shipping_only": false,
+      "sort": "cafe_review_desc", "prioritize_fresh": true,
+      "_설명": "종합 1위 — 앱 인기 카페 대표 원두. 신규입고/한정/소량·인스타 소식 신호 있으면 최우선"
+    },
+    "오늘은 저렴하게": {
+      "enabled": true, "count": 6, "max_per_roastery": 1,
+      "price_min": 5000, "price_max": 70000,
+      "origins": [], "free_shipping_only": false,
+      "sort": "price_per_g_asc",
+      "_설명": "가성비 — g당 가격 낮은 순"
+    },
+    "오늘은 고급지게": {
+      "enabled": true, "count": 6, "max_per_roastery": 1,
+      "price_min": 15000, "price_max": 70000,
+      "origins": [], "free_shipping_only": false,
+      "sort": "price_per_g_desc",
+      "_설명": "프리미엄 — g당 가격 높은 고급 라인"
+    },
+    "오늘은 특별하게": {
+      "enabled": true, "count": 6, "max_per_roastery": 1,
+      "price_min": 5000, "price_max": 200000,
+      "require_origin": true, "one_per_origin": true,
+      "origins": ["게이샤", "게샤", "파나마", "예멘", "코나", "블루마운틴", "에티오피아", "케냐", "르완다", "부룬디", "과테말라", "코스타리카", "엘살바도르", "콜롬비아", "페루", "볼리비아", "파푸아뉴기니", "탄자니아"],
+      "sort": "composite", "prioritize_fresh": true,
+      "_설명": "싱글오리진 특별한 산지 — 산지별 다양. 신규입고/한정/소량·인스타 소식 신호 있으면 최우선"
+    }
+  }
+}
